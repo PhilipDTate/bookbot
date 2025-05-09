@@ -1,7 +1,9 @@
+import sys
 from stats import get_num_words
 from stats import count_chars
 from stats import chars_dict_to_chars_list
 from stats import sort_chars
+
 
 def get_book_text(path_to_file):
     with open(path_to_file) as f:
@@ -31,6 +33,12 @@ def print_report(book_path):
 
 
 def main():
-    print_report("books/frankenstein.txt")
+
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    path_to_book = sys.argv[1]
+    print_report(path_to_book)
 
 main()
